@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'View/home_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,42 +12,11 @@ class MyApp extends StatelessWidget {
       title: 'Twins Bar & Restaurante',
       theme: ThemeData(
         primarySwatch: Colors.red,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
+        primaryColor: Color.fromRGBO(173, 40, 49, 1),
+
       ),
-      home: MyHomePage(title: 'Twins Bar & Restaurante'),
+      home: HomePage(title: 'Twins Bar & Restaurante'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-    
-        title: Text(widget.title),
-      ),
-      body: Center(
-      
-        child: Column(
-        
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'App',
-            ),
-          ],
-        ),
-      ),// This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
-}
