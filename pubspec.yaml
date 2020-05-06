@@ -73,7 +73,6 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
-
   fonts:
     - family: Lato
       fonts:
