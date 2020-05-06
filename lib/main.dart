@@ -1,9 +1,8 @@
+import 'package:CapiCardapio/View/home_page.dart';
+import 'package:CapiCardapio/View/splash_page.dart';
 import 'package:flutter/material.dart';
-import 'View/home_page.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
@@ -13,10 +12,12 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.red,
         primaryColor: Color.fromRGBO(173, 40, 49, 1),
-
       ),
-      home: HomePage(title: 'Twins Bar & Restaurante'),
+      home: SplashScreen(),
+      routes: <String, WidgetBuilder>{
+        '/home_page': (BuildContext context) =>
+            new HomePage(title: 'Twins Bar & Restaurante')
+      },
     );
   }
 }
-
