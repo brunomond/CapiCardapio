@@ -9,7 +9,10 @@ class DrawerPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-						child: ListView(
+            elevation: 8,
+						child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 DrawerHeader(
                   padding: EdgeInsets.all(0),
@@ -22,7 +25,8 @@ class DrawerPage extends StatelessWidget {
                       children: <Widget>[
                         CircleAvatar(
                           radius: 32,
-                          backgroundImage: AssetImage("images/twins_logo_red.png")
+                          backgroundImage: AssetImage("images/avatar.png"),
+                          backgroundColor: Colors.white
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(8.0, 0, 0, 0),
@@ -71,8 +75,18 @@ class DrawerPage extends StatelessWidget {
                     Navigator.pushNamed(context, '/admin_page');
                    },
                 ),
-                ]
-            ),
+                Expanded(
+                  flex: 1,
+                  child:
+                    Container(
+                      alignment: Alignment.bottomLeft,
+                      padding: EdgeInsets.fromLTRB(16, 0, 0, 16),
+                      height:48,
+                      child: Image.asset('images/brand_devs.png',width: 100)
+                    )
+                )
+              ]
+            )
       );
   }
 }
