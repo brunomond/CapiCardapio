@@ -1,3 +1,4 @@
+import 'package:CapiCardapio/View/Ultis.dart';
 import 'package:flutter/material.dart';
 
 class DrawerPage extends StatelessWidget {
@@ -17,7 +18,7 @@ class DrawerPage extends StatelessWidget {
                 DrawerHeader(
                   padding: EdgeInsets.all(0),
                   decoration: BoxDecoration(
-                    color: Color.fromRGBO(153, 32, 40, 1),
+                    color: primaryColor,
                   ),
                   child:Padding(
                     padding: const EdgeInsets.fromLTRB(8.0,0,0,0),

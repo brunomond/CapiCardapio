@@ -1,3 +1,4 @@
+import 'package:CapiCardapio/View/Ultis.dart';
 import 'package:flutter/material.dart';
 
 // SplashScreen
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Twins Bar & Restaurante',
       theme: ThemeData(
-        primaryColor: Color.fromRGBO(173, 40, 49, 1),
+        primaryColor: primaryColorDarkness,
       ),
       initialRoute: '/splash_screen',
       home: SplashScreen(),
