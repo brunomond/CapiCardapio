@@ -1,5 +1,7 @@
+import 'package:CapiCardapio/View/Components/AppBarWidget.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import './DrawerPage/DrawerPage.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -11,28 +13,19 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
-
-
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-
-        title: Text(widget.title),
-      ),
-      body: Center(
-
-        child: Column(
-
-          mainAxisAlignment: MainAxisAlignment.center,
+    var center = Center(
+        child: ListView(
           children: <Widget>[
-            Text(
-              'App',
-            ),
           ],
         ),
-      ),// This trailing comma makes auto-formatting nicer for build methods.
+    );
+
+    return Scaffold(
+      appBar: AppBarWidget(title: widget.title),
+      drawer: DrawerPage(),
+      body: center,// This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
