@@ -70,7 +70,7 @@ class DrawerPage extends StatelessWidget {
                 ),
                 ListTile(
                   leading: Icon(Icons.supervisor_account),
-                  title: Text("Admin",style:_textMenu),
+                  title: Text("Admin",style:_textMenu,),
                   onTap: (){ 
                     Navigator.pushNamed(context, '/admin_page');
                    },

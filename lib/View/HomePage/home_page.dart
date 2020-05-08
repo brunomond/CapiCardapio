@@ -1,7 +1,6 @@
 import 'package:CapiCardapio/View/Components/AppBarWidget.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import './DrawerPage/DrawerPage.dart';
+import 'package:CapiCardapio/View/DrawerPage/DrawerPage.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
@@ -18,6 +17,7 @@ class _HomePageState extends State<HomePage> {
     var center = Center(
         child: ListView(
           children: <Widget>[
+            Text("Home")
           ],
         ),
     );
