@@ -14,6 +14,7 @@ class _HomePageState extends State<HomePage> {
   String _valor = "17,00";
   String _nome = "Prato executivo de carne";
   String _image = "images/Prato_Executivo.jpg";
+  String _descri= "exemplo";
 
   void _fav() {
     setState(() {
@@ -93,7 +94,7 @@ class _HomePageState extends State<HomePage> {
         Align(
             alignment: Alignment(-0.7, 0.0),
             child: Text(
-              "exemplo",
+              _descri,
               style: TextStyle(color: Colors.black, fontSize: 25.0),
             )),
       ]),
