@@ -25,13 +25,13 @@ class DrawerPage extends StatelessWidget {
                       children: <Widget>[
                         CircleAvatar(
                           radius: 32,
-                          backgroundImage: AssetImage("images/avatar.png"),
+                          backgroundImage: AssetImage('images/avatar.png'),
                           backgroundColor: Colors.white
                         ),
                         Padding(
                           padding: const EdgeInsets.fromLTRB(8.0, 0, 0, 0),
                           child:Text(
-                            "Twins Bar & Restaurante",
+                            'Twins Bar & Restaurante',
                             style: _textHeading),
                         )
                         
@@ -40,23 +40,23 @@ class DrawerPage extends StatelessWidget {
                 ),
                 ListTile(
                   leading: Icon(Icons.home),
-                  title: Text("Home",style:_textMenu),
+                  title: Text('Home',style:_textMenu),
                   onTap: (){ 
-                    Navigator.pushNamed(context,'/home_page');
+                    Navigator.popAndPushNamed(context,'/home_page');
                    },
                 ),
                 ListTile(
                   leading: Icon(Icons.favorite),
-                  title: Text("Favoritos",style:_textMenu),
+                  title: Text('Favoritos',style:_textMenu),
                   onTap: (){ 
-                    Navigator.pushNamed(context, '/favorite_page');
+                    Navigator.popAndPushNamed(context, '/favorite_page');
                    },
                 ),
                 ListTile(
                   leading: Icon(Icons.store),
-                  title: Text("Sobre",style:_textMenu),
+                  title: Text('Sobre',style:_textMenu),
                   onTap: (){ 
-                    Navigator.pushNamed(context, '/about_page');
+                    Navigator.popAndPushNamed(context, '/about_page');
                    },
                 ),
                 Container(
@@ -70,9 +70,9 @@ class DrawerPage extends StatelessWidget {
                 ),
                 ListTile(
                   leading: Icon(Icons.supervisor_account),
-                  title: Text("Admin",style:_textMenu),
+                  title: Text('Admin',style:_textMenu,),
                   onTap: (){ 
-                    Navigator.pushNamed(context, '/admin_page');
+                    Navigator.popAndPushNamed(context, '/admin_page');
                    },
                 ),
                 Expanded(
