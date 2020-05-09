@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "561488219073",
+    "firebase_url": "https://twinsbarrestaurante.firebaseio.com",
+    "project_id": "twinsbarrestaurante",
+    "storage_bucket": "twinsbarrestaurante.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:561488219073:android:bc6803359c34ca80ac3d40",
+        "android_client_info": {
+          "package_name": "br.com.capidevs.twinsbarerestaurante"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "561488219073-f2be5fn5kfu19qqiuc0m0kodhgbi72si.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBJnp-Vi1SAoOYs2hOlOCtGzYQTldIQUK4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "561488219073-f2be5fn5kfu19qqiuc0m0kodhgbi72si.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

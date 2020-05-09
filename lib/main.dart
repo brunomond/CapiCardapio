@@ -1,6 +1,14 @@
-import 'package:CapiCardapio/View/home_page.dart';
-import 'package:CapiCardapio/View/splash_page.dart';
+import 'package:CapiCardapio/View/Ultis.dart';
 import 'package:flutter/material.dart';
+
+// SplashScreen
+import 'package:CapiCardapio/View/splash_page.dart';
+
+// Pages
+import 'package:CapiCardapio/View/AboutPage/AboutPage.dart';
+import 'package:CapiCardapio/View/AdminPage/AdminPage.dart';
+import 'package:CapiCardapio/View/FavoritePage/FavoritePage.dart';
+import 'package:CapiCardapio/View/home_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,13 +18,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Twins Bar & Restaurante',
       theme: ThemeData(
-        primarySwatch: Colors.red,
-        primaryColor: Color.fromRGBO(173, 40, 49, 1),
+        primaryColor: primaryColorDarkness,
       ),
+      initialRoute: '/splash_screen',
       home: SplashScreen(),
       routes: <String, WidgetBuilder>{
-        '/home_page': (BuildContext context) =>
-            new HomePage(title: 'Twins Bar & Restaurante')
+        '/home_page': (BuildContext context) => HomePage(title: 'Twins Bar & Restaurante'),
+        '/favorite_page': (BuildContext context) => FavoritePage(title: 'Pratos Favoritos'),
+        '/about_page': (BuildContext context) => AboutPage(title: 'Twins Bar & Restaurante'),
+        '/admin_page': (BuildContext context) => AdminPage(title: 'Admin')
       },
     );
   }
