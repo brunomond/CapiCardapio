@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 class HomePage extends StatefulWidget {
   HomePage({Key key, this.title}) : super(key: key);
   final String title;
@@ -94,7 +93,7 @@ class _HomePageState extends State<HomePage> {
         Align(
             alignment: Alignment(-0.7, 0.0),
             child: Text(
-              "quem ler é viado",
+              "exemplo",
               style: TextStyle(color: Colors.black, fontSize: 25.0),
             )),
       ]),
