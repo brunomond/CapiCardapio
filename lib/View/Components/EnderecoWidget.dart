@@ -5,7 +5,7 @@ Widget EnderecoWidget(){
   return Container(
           width: double.infinity,
           margin:EdgeInsets.fromLTRB(16, 8, 16, 8),
-          padding:EdgeInsets.fromLTRB(24, 8, 24, 8),
+          padding:EdgeInsets.all(8),
           decoration: BoxDecoration(
             color:primaryColor,
             borderRadius: BorderRadius.all(Radius.circular(2)),

@@ -19,7 +19,7 @@ class _FavoritePageState extends State<FavoritePage> {
       drawer: DrawerPage(),
       body: ListView(
         children: <Widget>[
-
+            Text("Favoerite")
         ],
       )
     );

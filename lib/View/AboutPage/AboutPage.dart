@@ -19,7 +19,7 @@ class _AboutPageState extends State<AboutPage> {
       drawer: DrawerPage(),
       body: ListView(
         children: <Widget>[
-
+            Text("About")
         ],
       )
     );

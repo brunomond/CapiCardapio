@@ -1,3 +1,4 @@
+import 'package:CapiCardapio/View/AdminPage/LoginAdminPage.dart';
 import 'package:CapiCardapio/View/Ultis.dart';
 import 'package:flutter/material.dart';
 
@@ -8,7 +9,7 @@ import 'package:CapiCardapio/View/splash_page.dart';
 import 'package:CapiCardapio/View/AboutPage/AboutPage.dart';
 import 'package:CapiCardapio/View/AdminPage/AdminPage.dart';
 import 'package:CapiCardapio/View/FavoritePage/FavoritePage.dart';
-import 'package:CapiCardapio/View/home_page.dart';
+import 'package:CapiCardapio/View/HomePage/home_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,13 +21,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: primaryColorDarkness,
       ),
-      initialRoute: '/splash_screen',
+      initialRoute: '/',
       home: SplashScreen(),
       routes: <String, WidgetBuilder>{
         '/home_page': (BuildContext context) => HomePage(title: 'Twins Bar & Restaurante'),
         '/favorite_page': (BuildContext context) => FavoritePage(title: 'Pratos Favoritos'),
         '/about_page': (BuildContext context) => AboutPage(title: 'Twins Bar & Restaurante'),
-        '/admin_page': (BuildContext context) => AdminPage(title: 'Admin')
+        '/admin_page': (BuildContext context) => AdminPage(title: 'Admin'),
+        '/login_admin': (BuildContext context) => LoginAdminPage(title: 'Admin')
       },
     );
   }

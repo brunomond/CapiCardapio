@@ -31,6 +31,7 @@ dependencies:
   google_fonts: ^1.0.0
   cloud_firestore: ^0.13.5
   firebase_analytics: ^5.0.11
+  shared_preferences: ^0.5.7+1
 
 dev_dependencies:
   flutter_test:
@@ -55,6 +56,7 @@ flutter:
     - images/brand_devs.png
     - images/restarant.jpg
     - images/bar.jpg
+    - images/admin.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
