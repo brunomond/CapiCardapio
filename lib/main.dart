@@ -1,4 +1,5 @@
 import 'package:CapiCardapio/View/AdminPage/LoginAdminPage.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // SplashScreen
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       title: 'Twins Bar & Restaurante',
       theme: ThemeData(
         primaryColor: Color.fromRGBO(173, 40, 49, 1),
+        disabledColor: Color.fromRGBO(130, 130, 130, 1),
       ),
       initialRoute: '/',
       home: SplashScreen(),
