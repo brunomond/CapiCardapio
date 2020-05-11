@@ -1,28 +1,21 @@
-import 'package:CapiCardapio/View/Components/AppBarWidget.dart';
-import 'package:CapiCardapio/View/DrawerPage/DrawerPage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
-class FavoritePage extends StatefulWidget {
-
-  final String title;
-  const FavoritePage({Key key, this.title}) : super(key: key);
-
+class Comidas extends StatefulWidget {
   @override
-  _FavoritePageState createState() => _FavoritePageState();
+  _ComidasState createState() => _ComidasState();
 }
 
-class _FavoritePageState extends State<FavoritePage> {
+class _ComidasState extends State<Comidas> {
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBarWidget(title: widget.title),
-      drawer: DrawerPage(),
-      body: GridView.builder(
+    return GridView.builder(
         padding: EdgeInsets.all(16),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          mainAxisSpacing: 24,
-          crossAxisSpacing: 16,
+          mainAxisSpacing: 24.0,
+          crossAxisSpacing: 16.0,
           childAspectRatio: 0.7894736842105263,
         ),
         itemCount: 10,
@@ -90,7 +83,6 @@ class _FavoritePageState extends State<FavoritePage> {
               ),
             ),
           );
-      })
-    );
+        });
   }
 }

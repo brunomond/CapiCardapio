@@ -1,38 +1,26 @@
-import 'package:CapiCardapio/View/Components/AppBarWidget.dart';
-import 'package:CapiCardapio/View/DrawerPage/DrawerPage.dart';
 import 'package:flutter/material.dart';
 
-class FavoritePage extends StatefulWidget {
-
-  final String title;
-  const FavoritePage({Key key, this.title}) : super(key: key);
-
+class Bebidas extends StatefulWidget {
   @override
-  _FavoritePageState createState() => _FavoritePageState();
+  _BebidasState createState() => _BebidasState();
 }
 
-class _FavoritePageState extends State<FavoritePage> {
+class _BebidasState extends State<Bebidas> {
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBarWidget(title: widget.title),
-      drawer: DrawerPage(),
-      body: GridView.builder(
-        padding: EdgeInsets.all(16),
+    return GridView.builder(
+        padding: EdgeInsets.all(17.0),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
-          mainAxisSpacing: 24,
-          crossAxisSpacing: 16,
+          mainAxisSpacing: 24.0,
+          crossAxisSpacing: 17.0,
           childAspectRatio: 0.7894736842105263,
         ),
         itemCount: 10,
         itemBuilder: (context, index) {
           return InkWell(
-             onTap: (){
-              Navigator.pushNamed(context, '/descrition_page');
-            },
             child: Card(
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -40,7 +28,7 @@ class _FavoritePageState extends State<FavoritePage> {
                   AspectRatio(
                     aspectRatio: 1.125,
                     child: Image.asset(
-                      'images/Prato_Executivo.jpg',
+                      'images/heineken.jpg',
                       fit: BoxFit.cover,
                     ),
                   ),
@@ -90,7 +78,6 @@ class _FavoritePageState extends State<FavoritePage> {
               ),
             ),
           );
-      })
-    );
+        });
   }
 }

@@ -8,16 +8,15 @@ class DescritionPage extends StatefulWidget {
 }
 
 class _DescritionPageState extends State<DescritionPage> {
-  void _retornar() {
-    Navigator.popAndPushNamed(context, '/home_page');
-  }
+
   bool _favorito = true;
   String _valor = "17,00";
   String _nome = "Prato executivo de carne";
   String _image = "images/Prato_Executivo.jpg";
-  String _descri= "exemplo";
+  String _descri= "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
 
   void _fav() {
+    print("Flowers");
     setState(() {
       if (_favorito == true) {
         _favorito = false;
@@ -31,73 +30,94 @@ class _DescritionPageState extends State<DescritionPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back),
-          onPressed: _retornar,
-        ),
         title: Text("Cardápio Restaurante"),
       ),
-      body: Column(children: <Widget>[
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: <Widget>[
         Image.asset(
           _image,
           fit: BoxFit.cover,
-          height: 262.0,
+          width: double.infinity,
+          height: 265,
         ),
         Container(
-          height: 67.0,
-          width: 1000.0,
-          color: Color.fromRGBO(173, 40, 49, 1),
+          width: double.infinity,
+          color: Theme.of(context).primaryColor,
           child: Row(
             children: <Widget>[
-              Expanded(
-                child: Column(children: <Widget>[
-                  Text(
-                    _nome,
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.bold),
-                  ),
-                  Align(
-                    alignment: Alignment(-0.75, 0.7),
-                    child: Text(
+            Stack(
+              alignment: Alignment.topCenter,
+              overflow: Overflow.visible,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(24),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                    Text(
+                      _nome,
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          fontWeight: FontWeight.bold),
+                    ),
+                    Text(
                       "RS $_valor",
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 25.0,
-                          fontWeight: FontWeight.bold),
+                          fontSize: 22,
+                          fontWeight: FontWeight.w400),
                     ),
-                  )
-                ]),
-              ),
-              Align(
-                alignment: Alignment(0.0, -1.0),
-                child: FloatingActionButton(
-                  backgroundColor: Color.fromRGBO(173, 1, 2, 1),
-                  onPressed: _fav,
-                  child:
-                  Icon(_favorito ? Icons.favorite : Icons.favorite_border),
+                    ],),
                 ),
-              )
-            ],
-          ),
+                Positioned(
+                  height: 64,
+                  width: 64,
+                  top:-32,
+                  right:-64,
+                  child: FloatingActionButton(
+                    elevation: 4,
+                    backgroundColor: Theme.of(context).primaryColorDark,
+                    onPressed: _fav,
+                    child:
+                    Icon(_favorito ? Icons.favorite : Icons.favorite_border,size:32),
+                  ),
+                )
+              ]
+            )
+          ],
         ),
-        Align(
-            alignment: Alignment(-0.7, 0.0),
-            child: Text(
-              "Descrição",
-              style: TextStyle(
-                  color: Colors.black,
-                  fontSize: 27.0,
-                  fontWeight: FontWeight.bold),
-            )),
-        Align(
-            alignment: Alignment(-0.7, 0.0),
-            child: Text(
-              _descri,
-              style: TextStyle(color: Colors.black, fontSize: 25.0),
-            )),
-      ]),
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left:24,top:16,right:24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: Text(
+                  "Descrição",
+                  style: TextStyle(
+                      color: Color.fromRGBO(33, 33, 33, 1),
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold),
+              ),
+                ),
+              Text(
+                _descri,
+                style: TextStyle(color: Color.fromRGBO(66, 66, 66, 1), fontSize: 16),
+              ),
+              ]
+          ),
+        )
+      ])
     );
   }
 }
