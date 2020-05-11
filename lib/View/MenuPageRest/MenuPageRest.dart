@@ -15,6 +15,9 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
 
   TabController controller;
 
+  Text _title = Text("Cardápio do Restaurante");
+  IconData iconBar = Icons.wb_sunny;
+
   @override
   void initState() {
     super.initState();
@@ -31,9 +34,22 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text ("Cardápio do Restaurante"),
-          centerTitle: true,
+          title: _title,
           backgroundColor: Color.fromRGBO(173, 40, 49, 1),
+          actions: <Widget>[
+            InkWell(
+              child: Padding(
+                padding: const EdgeInsets.only(top:8,bottom:8,left:16,right:16),
+                child: Icon(iconBar,color:Colors.white),
+              ),
+              onTap: (){
+                setState(() {
+                  _title = Text(_title.data == 'Cardápio de Bar' ? 'Cardápio do Restaurante' : 'Cardápio de Bar');
+                  iconBar = _title.data == 'Cardápio de Bar' ? Icons.brightness_3 : Icons.wb_sunny;
+                });
+              }
+            )
+          ],
           bottom: TabBar(
               indicatorColor: Colors.white,
               controller: controller,

@@ -10,7 +10,7 @@ class _BebidasState extends State<Bebidas> {
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
-        padding: EdgeInsets.all(17.0),
+        padding: EdgeInsets.all(16),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
           mainAxisSpacing: 24.0,
@@ -20,7 +20,11 @@ class _BebidasState extends State<Bebidas> {
         itemCount: 10,
         itemBuilder: (context, index) {
           return InkWell(
+            onTap: (){
+              Navigator.pushNamed(context, '/descrition_page');
+            },
             child: Card(
+              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(2)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 mainAxisAlignment: MainAxisAlignment.start,
