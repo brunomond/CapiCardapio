@@ -22,15 +22,17 @@ class _HomePageState extends State<HomePage> {
         child: ListView(
           children: <Widget>[
             CardWidget(
+              context,
               title:"Restaurante",
               subTitle: "Pratos selecionados para sua refeição.",
               hours: "10:00 às 14:00",
               image: AssetImage('images/restarant.jpg'),
               navigatorToPage: (){
-                Navigator.pushNamed(context, '/home_page');
+                Navigator.pushNamed(context, '/descrition_page');
               },
             ),
             CardWidget(
+              context,
               title:"Bar e Happy Hour",
               subTitle: "Porções e bebidas para sua noite.",
               hours: "18:00 às 00:00",
@@ -39,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                 Navigator.pushNamed(context, '/favorite_page');
               }
             ),
-            EnderecoWidget()
+            EnderecoWidget(context)
           ],
         ),
     );

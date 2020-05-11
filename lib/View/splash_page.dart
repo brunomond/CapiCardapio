@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:CapiCardapio/View/Ultis.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -34,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
             fit: StackFit.expand,
             children: <Widget>[
               Container(
-                decoration: BoxDecoration(color: darkness),
+                decoration: BoxDecoration(color: Theme.of(context).primaryColorDark),
               ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.start,

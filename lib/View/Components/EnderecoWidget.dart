@@ -1,13 +1,12 @@
-import 'package:CapiCardapio/View/Ultis.dart';
 import 'package:flutter/material.dart';
 
-Widget EnderecoWidget(){
+Widget EnderecoWidget(context){
   return Container(
           width: double.infinity,
           margin:EdgeInsets.fromLTRB(16, 8, 16, 8),
-          padding:EdgeInsets.all(8),
+          padding:EdgeInsets.only(top: 8,left:16,right: 16,bottom:8),
           decoration: BoxDecoration(
-            color:primaryColor,
+            color:Theme.of(context).primaryColor,
             borderRadius: BorderRadius.all(Radius.circular(2)),
             shape:BoxShape.rectangle,
           ),
@@ -44,7 +43,8 @@ Widget EnderecoWidget(){
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: <Widget>[
-                Text("Av. Afonso Pena, N 1030",style:TextStyle(color: Colors.white)),
+                Text("Av. Afonso Pena",style:TextStyle(color: Colors.white)),
+                Text("N 1030",style:TextStyle(color: Colors.white)),
                 Text("Jardim dos Estados",style:TextStyle(color: Colors.white))
               ],)
             ],)

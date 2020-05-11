@@ -1,15 +1,16 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-class HomePage extends StatefulWidget {
-  HomePage({Key key, this.title}) : super(key: key);
+class DescritionPage extends StatefulWidget {
+  DescritionPage({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _DescritionPageState createState() => _DescritionPageState();
 }
 
-class _HomePageState extends State<HomePage> {
-  void _retornar() {}
+class _DescritionPageState extends State<DescritionPage> {
+  void _retornar() {
+    Navigator.popAndPushNamed(context, '/home_page');
+  }
   bool _favorito = true;
   String _valor = "17,00";
   String _nome = "Prato executivo de carne";
@@ -35,7 +36,6 @@ class _HomePageState extends State<HomePage> {
           onPressed: _retornar,
         ),
         title: Text("Cardápio Restaurante"),
-        centerTitle: true,
       ),
       body: Column(children: <Widget>[
         Image.asset(

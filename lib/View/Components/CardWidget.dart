@@ -1,7 +1,6 @@
-import 'package:CapiCardapio/View/Ultis.dart';
 import 'package:flutter/material.dart';
 
-Widget CardWidget({String title,String subTitle, String hours,AssetImage image,Function navigatorToPage}){
+Widget CardWidget(context,{String title,String subTitle, String hours,AssetImage image,Function navigatorToPage}){
 
   final TextStyle _textTitle = TextStyle(color:Colors.white,fontSize:22,fontWeight: FontWeight.bold);
   final TextStyle _textSubTitle = TextStyle(color:Color.fromRGBO(240, 240, 240, 1),fontSize:16,fontWeight: FontWeight.w400);
@@ -25,7 +24,7 @@ Widget CardWidget({String title,String subTitle, String hours,AssetImage image,F
       ),
       child: 
       InkWell(
-          splashColor: primaryColor,
+          splashColor: Theme.of(context).primaryColor,
           onTap: navigatorToPage,
           child:
           Column(
