@@ -38,7 +38,7 @@ class _BebidasState extends State<Bebidas> {
                   ),
                   Expanded(
                       child: Container(
-                          color: Color.fromRGBO(173, 40, 49, 1),
+                          color: Theme.of(context).primaryColor,
                           padding: EdgeInsets.all(5),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,

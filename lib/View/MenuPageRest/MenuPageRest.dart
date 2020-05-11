@@ -3,15 +3,15 @@ import './comidas_rest.dart' as first;
 import './bebidas_rest.dart' as second;
 
 void main() => runApp(MaterialApp(
-  home: MyTabs(),
+  home: CardapioRest(),
 ));
 
-class MyTabs extends StatefulWidget {
+class CardapioRest extends StatefulWidget {
   @override
-  MyTabsState createState() => MyTabsState();
+  CardapioRestState createState() => CardapioRestState();
 }
 
-class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
+class CardapioRestState extends State<CardapioRest> with SingleTickerProviderStateMixin {
 
   TabController controller;
 
@@ -35,7 +35,7 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
     return Scaffold(
       appBar: AppBar(
           title: _title,
-          backgroundColor: Color.fromRGBO(173, 40, 49, 1),
+          backgroundColor: Theme.of(context).primaryColor,
           actions: <Widget>[
             InkWell(
               child: Padding(
@@ -44,8 +44,8 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
               ),
               onTap: (){
                 setState(() {
-                  _title = Text(_title.data == 'Cardápio de Bar' ? 'Cardápio do Restaurante' : 'Cardápio de Bar');
-                  iconBar = _title.data == 'Cardápio de Bar' ? Icons.brightness_3 : Icons.wb_sunny;
+                  _title = Text(_title.data == 'Cardápio do Bar' ? 'Cardápio do Restaurante' : 'Cardápio do Bar');
+                  iconBar = _title.data == 'Cardápio do Bar' ? Icons.brightness_3 : Icons.wb_sunny;
                 });
               }
             )
