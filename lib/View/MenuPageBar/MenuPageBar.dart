@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:CapiCardapio/View/Ultis.dart';
 import './comidas_bar.dart' as first;
 import './bebidas_bar.dart' as second;
 

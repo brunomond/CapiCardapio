@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:CapiCardapio/View/Ultis.dart';
 
 class Comidas extends StatefulWidget {
   @override
