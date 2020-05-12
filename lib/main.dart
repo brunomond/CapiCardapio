@@ -34,6 +34,7 @@ class MyApp extends StatelessWidget {
         '/descrition_page': (BuildContext context) => DescritionPage(title: 'Descrição'),
         '/login_admin': (BuildContext context) => LoginAdminPage(title: 'Admin'),
         '/menu_page':(BuildContext context) => MyTabs()
+
       },
     );
   }
