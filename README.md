@@ -63,6 +63,7 @@ Usamos [SemVer] (http://semver.org/) para versionar. Para todas as versões disp
 
 _ Menção a todos aqueles que ajudaram a levantar o projeto desde o seu início_
 
+* ** Bruno Monteiro ** - * Full stack Developer * - [brunomond] (https://github.com/brunomond)
 * ** Gilson Santos ** - * Design/ Front-end * - [gisonsantoss] (https://github.com/gisonsantoss)
 
 Você também pode consultar a lista de todos os [colaboradores] (https://github.com/your/project/contributors) que participaram deste projeto. 
