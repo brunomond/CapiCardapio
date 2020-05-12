@@ -12,7 +12,7 @@ Widget CardWidget(context,{String title,String subTitle, String hours,AssetImage
     borderOnForeground: true,
     color: Colors.grey,
     child: Container(
-      height: 240,
+      height: 245,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(2)),
@@ -34,8 +34,8 @@ Widget CardWidget(context,{String title,String subTitle, String hours,AssetImage
               SizedBox(height: 140),
               Container(
                 width: double.infinity,
-                height: 100,
-                padding: EdgeInsets.fromLTRB(24, 4, 24, 4),
+                height: 105,
+                padding: EdgeInsets.fromLTRB(16, 4, 16, 4),
                 alignment: Alignment.bottomCenter,
                 decoration: BoxDecoration(
                 borderRadius: BorderRadius.all(Radius.circular(2)),
