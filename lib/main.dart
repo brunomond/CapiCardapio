@@ -22,7 +22,8 @@ class MyApp extends StatelessWidget {
       title: 'Twins Bar & Restaurante',
       theme: ThemeData(
         primaryColor: Color.fromRGBO(173, 40, 49, 1),
-        primaryColorDark: Color.fromRGBO(114, 35, 43, 1)
+        primaryColorDark: Color.fromRGBO(100, 13, 20, 1),
+        disabledColor: Color.fromRGBO(130, 130, 130, 1),
       ),
       initialRoute: '/',
       debugShowCheckedModeBanner: false,
