@@ -75,7 +75,8 @@ class _AdminPageState extends State<AdminPage> {
                     case ConnectionState.waiting:
                       return Center(
                         child: CircularProgressIndicator(
-                          backgroundColor: Theme.of(context).primaryColor,
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              Theme.of(context).primaryColor),
                         ),
                       );
                     default:
