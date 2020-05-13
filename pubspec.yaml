@@ -43,6 +43,7 @@ dependencies:
   flutter_masked_text: ^0.8.0
   image_picker: ^0.6.6+1
   image_cropper: ^1.2.1
+  auto_size_text: ^2.1.0
 
 dev_dependencies:
   flutter_test:
@@ -65,10 +66,9 @@ flutter:
     - images/twins_logo_red.png
     - images/avatar.png
     - images/brand_devs.png
-    - images/restarant.jpg
+    - images/restaurant.jpg
     - images/bar.jpg
     - images/Prato_Executivo.jpg
-    - images/heineken.jpg
     - images/admin.png
     - images/add_image.png
     - images/camera.png
@@ -101,8 +101,8 @@ flutter:
     - family: Lato
       fonts:
         - asset: fonts/Lato-Regular.ttf
-          weight: 400
+          weight: 500
         - asset: fonts/Lato-Bold.ttf
-          weight: 400
+          weight: 700
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

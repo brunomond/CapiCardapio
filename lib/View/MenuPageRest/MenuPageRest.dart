@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import './comidas_rest.dart' as first;
 import './bebidas_rest.dart' as second;
@@ -15,8 +16,6 @@ class CardapioRestState extends State<CardapioRest> with SingleTickerProviderSta
 
   TabController controller;
 
-  Text _title = Text("Cardápio do Restaurante");
-  IconData iconBar = Icons.wb_sunny;
 
   @override
   void initState() {
@@ -34,28 +33,20 @@ class CardapioRestState extends State<CardapioRest> with SingleTickerProviderSta
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: _title,
+          title: AutoSizeText('Cardápio do restaurante', style: TextStyle(fontSize: 20),),
           backgroundColor: Theme.of(context).primaryColor,
           actions: <Widget>[
-            InkWell(
-              child: Padding(
-                padding: const EdgeInsets.only(top:8,bottom:8,left:16,right:16),
-                child: Icon(iconBar,color:Colors.white),
-              ),
-              onTap: (){
-                setState(() {
-                  _title = Text(_title.data == 'Cardápio do Bar' ? 'Cardápio do Restaurante' : 'Cardápio do Bar');
-                  iconBar = _title.data == 'Cardápio do Bar' ? Icons.brightness_3 : Icons.wb_sunny;
-                });
-              }
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: GestureDetector(onTap: _changeMenu, child: Icon(Icons.wb_sunny, color: Colors.white,)),
             )
           ],
           bottom: TabBar(
               indicatorColor: Colors.white,
               controller: controller,
               tabs: <Tab>[
-                Tab(icon: Text("COMIDAS")),
-                Tab(icon: Text("BEBIDAS")),
+                Tab(icon: Text('COMIDAS')),
+                Tab(icon: Text('BEBIDAS')),
               ]
           )
       ),
@@ -67,5 +58,9 @@ class CardapioRestState extends State<CardapioRest> with SingleTickerProviderSta
         ],
       ),
     );
+  }
+
+  void _changeMenu(){
+    Navigator.pushReplacementNamed(context, '/menu_bar');
   }
 }

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import './comidas_bar.dart' as first;
 import './bebidas_bar.dart' as second;
@@ -15,8 +16,6 @@ class CardapioBarState extends State<CardapioBar> with SingleTickerProviderState
 
   TabController controller;
 
-  Text _title = Text("Cardápio do Bar");
-  IconData iconBar = Icons.brightness_3;
 
   @override
   void initState() {
@@ -34,20 +33,12 @@ class CardapioBarState extends State<CardapioBar> with SingleTickerProviderState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: _title,
+          title: AutoSizeText('Cardápio do bar', style: TextStyle(fontSize: 20),),
           backgroundColor: Theme.of(context).primaryColor,
           actions: <Widget>[
-            InkWell(
-                child: Padding(
-                  padding: const EdgeInsets.only(top:8,bottom:8,left:16,right:16),
-                  child: Icon(iconBar,color:Colors.white),
-                ),
-                onTap: (){
-                  setState(() {
-                    _title = Text(_title.data == 'Cardápio do Restaurante' ? 'Cardápio do Bar' : 'Cardápio do Restaurante');
-                    iconBar = _title.data == 'Cardápio do Restaurante' ? Icons.wb_sunny : Icons.brightness_3;
-                  });
-                }
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: GestureDetector(onTap: _changeMenu, child: Icon(Icons.brightness_3, color: Colors.white,)),
             )
           ],
           bottom: TabBar(
@@ -62,10 +53,14 @@ class CardapioBarState extends State<CardapioBar> with SingleTickerProviderState
       body: TabBarView(
         controller: controller,
         children: <Widget> [
-          first.Comidas(),
+          first.ComidasBar(),
           second.Bebidas()
         ],
       ),
     );
+  }
+
+  void _changeMenu(){
+    Navigator.pushReplacementNamed(context, '/menu_rest');
   }
 }
