@@ -2,6 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DrawerPage extends StatelessWidget {
+  final String selectedPage;
+
+  DrawerPage({this.selectedPage});
+
   //Styles Text
   final TextStyle _textHeading = TextStyle(
       color: Colors.white, fontSize: 18, fontWeight: FontWeight.normal);
@@ -49,6 +53,7 @@ class DrawerPage extends StatelessWidget {
                 ),
               ),
               ListTile(
+                selected: selectedPage == 'home',
                 leading: Icon(Icons.home),
                 title: Text('Home', style: _textMenu),
                 onTap: () {
@@ -56,6 +61,7 @@ class DrawerPage extends StatelessWidget {
                 },
               ),
               ListTile(
+                selected: selectedPage == 'favorites',
                 leading: Icon(Icons.favorite),
                 title: Text('Favoritos', style: _textMenu),
                 onTap: () {
@@ -63,6 +69,7 @@ class DrawerPage extends StatelessWidget {
                 },
               ),
               ListTile(
+                selected: selectedPage == 'about',
                 leading: Icon(Icons.store),
                 title: Text('Sobre', style: _textMenu),
                 onTap: () {
@@ -77,6 +84,7 @@ class DrawerPage extends StatelessWidget {
                         bottom: BorderSide(width: 1.0, color: Colors.grey)),
                   )),
               ListTile(
+                selected: selectedPage == 'admin',
                 leading: Icon(Icons.supervisor_account),
                 title: Text(
                   'Admin',

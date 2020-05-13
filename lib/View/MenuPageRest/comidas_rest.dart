@@ -2,12 +2,12 @@ import 'package:CapiCardapio/View/Components/MenuItem.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-class Comidas extends StatefulWidget {
+class ComidasRest extends StatefulWidget {
   @override
-  _ComidasState createState() => _ComidasState();
+  _ComidasRestState createState() => _ComidasRestState();
 }
 
-class _ComidasState extends State<Comidas> {
+class _ComidasRestState extends State<ComidasRest> {
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +22,7 @@ class _ComidasState extends State<Comidas> {
         itemCount: 10,
         itemBuilder: (context, index) {
           return MenuItem(title: 'Porção batata frita com bacon e cheddar', price: 12.4, favorite: false, onTap: _navigateToDescription,);
+          
         });
   }
   void _navigateToDescription(){

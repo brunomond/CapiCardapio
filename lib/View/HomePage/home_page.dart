@@ -19,7 +19,7 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBarWidget(title: widget.title),
-      drawer: DrawerPage(),
+      drawer: DrawerPage(selectedPage: 'home',),
       body: Container(
         padding: EdgeInsets.only(top: 15),
         child: Column(

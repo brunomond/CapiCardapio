@@ -35,8 +35,9 @@ class MyApp extends StatelessWidget {
         '/admin_page': (BuildContext context) => AdminPage(title: 'Admin'),
         '/description_page': (BuildContext context) => DescriptionPage(title: 'Descrição'),
         '/login_admin': (BuildContext context) => LoginAdminPage(title: 'Admin'),
-        '/menu_rest':(BuildContext context) => CardapioRest(),
-        '/menu_bar' :(BuildContext context) => CardapioBar(),
+        '/menu_rest':(BuildContext context) => MenuRest(),
+        '/menu_bar':(BuildContext context) => MenuBar(),
+
       },
     );
   }

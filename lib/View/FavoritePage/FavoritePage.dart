@@ -17,7 +17,7 @@ class _FavoritePageState extends State<FavoritePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBarWidget(title: widget.title),
-      drawer: DrawerPage(),
+      drawer: DrawerPage(selectedPage: 'favorites',),
       body: GridView.builder(
         padding: EdgeInsets.all(10),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(

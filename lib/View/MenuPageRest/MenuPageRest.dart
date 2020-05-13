@@ -3,16 +3,12 @@ import 'package:flutter/material.dart';
 import './comidas_rest.dart' as first;
 import './bebidas_rest.dart' as second;
 
-void main() => runApp(MaterialApp(
-  home: CardapioRest(),
-));
-
-class CardapioRest extends StatefulWidget {
+class MenuRest extends StatefulWidget {
   @override
-  CardapioRestState createState() => CardapioRestState();
+  MenuRestState createState() => MenuRestState();
 }
 
-class CardapioRestState extends State<CardapioRest> with SingleTickerProviderStateMixin {
+class MenuRestState extends State<MenuRest> with SingleTickerProviderStateMixin {
 
   TabController controller;
 
@@ -53,8 +49,8 @@ class CardapioRestState extends State<CardapioRest> with SingleTickerProviderSta
       body: TabBarView(
         controller: controller,
         children: <Widget> [
-          first.Comidas(),
-          second.Bebidas()
+          first.ComidasRest(),
+          second.BebidasRest()
         ],
       ),
     );

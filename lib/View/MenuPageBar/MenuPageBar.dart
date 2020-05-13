@@ -3,19 +3,15 @@ import 'package:flutter/material.dart';
 import './comidas_bar.dart' as first;
 import './bebidas_bar.dart' as second;
 
-void main() => runApp(MaterialApp(
-  home: CardapioBar(),
-));
 
-class CardapioBar extends StatefulWidget {
+class MenuBar extends StatefulWidget {
   @override
-  CardapioBarState createState() => CardapioBarState();
+  MenuBarState createState() => MenuBarState();
 }
 
-class CardapioBarState extends State<CardapioBar> with SingleTickerProviderStateMixin {
+class MenuBarState extends State<MenuBar> with SingleTickerProviderStateMixin {
 
   TabController controller;
-
 
   @override
   void initState() {
@@ -54,7 +50,7 @@ class CardapioBarState extends State<CardapioBar> with SingleTickerProviderState
         controller: controller,
         children: <Widget> [
           first.ComidasBar(),
-          second.Bebidas()
+          second.BebidasBar()
         ],
       ),
     );

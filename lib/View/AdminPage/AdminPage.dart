@@ -57,7 +57,7 @@ class _AdminPageState extends State<AdminPage> {
             },
           )
         ]),
-        drawer: DrawerPage(),
+        drawer: DrawerPage(selectedPage: 'admin',),
         floatingActionButton: FloatingActionButton(
           backgroundColor: Theme.of(context).primaryColor,
           child: Icon(Icons.add),

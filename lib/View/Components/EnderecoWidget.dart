@@ -51,12 +51,12 @@ Widget EnderecoWidget(context, {Function onTapPhone, Function onTapAddress}){
                   ),
                   Expanded(
                     child: Padding(
-                      padding: EdgeInsets.only(top: 8),
+                      padding: EdgeInsets.only(top: 8, right: 8),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: <Widget>[
-                        AutoSizeText("Av. Afonso Pena, Nº 1030, Jardim dos Estados",style:TextStyle(color: Colors.white), maxLines: 4, softWrap: true,),
+                        AutoSizeText("Av. Afonso Pena, Nº 1020, Jardim dos Estados",style:TextStyle(color: Colors.white), maxLines: 4, softWrap: true,),
                       ],),
                     ),
                   )

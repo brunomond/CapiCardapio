@@ -22,7 +22,9 @@ class _ComidasBarState extends State<ComidasBar> {
         ),
         itemCount: 10,
         itemBuilder: (context, index) {
+
           return MenuItem(title: 'Porção batata frita com bacon e cheddar', price: 12.4, favorite: favorite, onTap: _navigateToDescription,);
+
         });
   }
 
