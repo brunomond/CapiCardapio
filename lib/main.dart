@@ -9,8 +9,9 @@ import 'package:CapiCardapio/View/AdminPage/AdminPage.dart';
 import 'package:CapiCardapio/View/FavoritePage/FavoritePage.dart';
 import 'package:CapiCardapio/View/HomePage/home_page.dart';
 import 'package:CapiCardapio/View/AdminPage/LoginAdminPage.dart';
-import 'package:CapiCardapio/View/DescritionPage/descrition_page.dart';
+import 'package:CapiCardapio/View/DescriptionPage/DescriptionPage.dart';
 import 'package:CapiCardapio/View/MenuPageRest/MenuPageRest.dart';
+import 'package:CapiCardapio/View/MenuPageBar/MenuPageBar.dart';
 
 void main() => runApp(MyApp());
 
@@ -20,8 +21,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Twins Bar & Restaurante',
       theme: ThemeData(
-        primaryColor: Color.fromRGBO(173, 40, 49, 1),
-        primaryColorDark: Color.fromRGBO(114, 35, 43, 1)
+        primaryColor: Color.fromRGBO(153,32,40, 1),
+        primaryColorDark: Color.fromRGBO(100, 13, 20, 1),
+        disabledColor: Color.fromRGBO(130, 130, 130, 1),
       ),
       initialRoute: '/',
       debugShowCheckedModeBanner: false,
@@ -31,9 +33,10 @@ class MyApp extends StatelessWidget {
         '/favorite_page': (BuildContext context) => FavoritePage(title: 'Favoritos'),
         '/about_page': (BuildContext context) => AboutPage(title: 'Twins Bar & Restaurante'),
         '/admin_page': (BuildContext context) => AdminPage(title: 'Admin'),
-        '/descrition_page': (BuildContext context) => DescritionPage(title: 'Descrição'),
+        '/description_page': (BuildContext context) => DescriptionPage(title: 'Descrição'),
         '/login_admin': (BuildContext context) => LoginAdminPage(title: 'Admin'),
-        '/menu_page':(BuildContext context) => MyTabs()
+        '/menu_rest':(BuildContext context) => MenuRest(),
+        '/menu_bar':(BuildContext context) => MenuBar(),
 
       },
     );

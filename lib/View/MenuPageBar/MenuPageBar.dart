@@ -1,17 +1,15 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import './comidas_bar.dart' as first;
 import './bebidas_bar.dart' as second;
 
-void main() => runApp(MaterialApp(
-  home: MyTabs(),
-));
 
-class MyTabs extends StatefulWidget {
+class MenuBar extends StatefulWidget {
   @override
-  MyTabsState createState() => MyTabsState();
+  MenuBarState createState() => MenuBarState();
 }
 
-class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
+class MenuBarState extends State<MenuBar> with SingleTickerProviderStateMixin {
 
   TabController controller;
 
@@ -31,9 +29,14 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text ("Cardápio do Bar"),
-          centerTitle: true,
-          backgroundColor: Color.fromRGBO(173, 40, 49, 1),
+          title: AutoSizeText('Cardápio do bar', style: TextStyle(fontSize: 20),),
+          backgroundColor: Theme.of(context).primaryColor,
+          actions: <Widget>[
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: GestureDetector(onTap: _changeMenu, child: Icon(Icons.brightness_3, color: Colors.white,)),
+            )
+          ],
           bottom: TabBar(
               indicatorColor: Colors.white,
               controller: controller,
@@ -46,10 +49,14 @@ class MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
       body: TabBarView(
         controller: controller,
         children: <Widget> [
-          first.Comidas(),
-          second.Bebidas()
+          first.ComidasBar(),
+          second.BebidasBar()
         ],
       ),
     );
+  }
+
+  void _changeMenu(){
+    Navigator.pushReplacementNamed(context, '/menu_rest');
   }
 }

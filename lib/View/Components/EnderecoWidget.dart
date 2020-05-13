@@ -1,53 +1,68 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
-Widget EnderecoWidget(context){
+Widget EnderecoWidget(context, {Function onTapPhone, Function onTapAddress}){
   return Container(
-          width: double.infinity,
-          margin:EdgeInsets.fromLTRB(16, 8, 16, 8),
-          padding:EdgeInsets.only(top: 8,left:16,right: 16,bottom:8),
+    height: MediaQuery.of(context).size.height * 0.13,
+          width: MediaQuery.of(context).size.width,
+          margin: EdgeInsets.all(10),
           decoration: BoxDecoration(
             color:Theme.of(context).primaryColor,
             borderRadius: BorderRadius.all(Radius.circular(2)),
             shape:BoxShape.rectangle,
           ),
           child:Row(
-            mainAxisSize: MainAxisSize.max,
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0,0,8,0),
-                child: Icon(Icons.phone,color:Colors.white,size:24),
+            Expanded(
+              flex: 1,
+              child: GestureDetector(
+                onTap: onTapPhone,
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Icon(Icons.phone,color:Colors.white,size:24),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                    Text("(67) 99000-0000",style:TextStyle(color: Colors.white)),
+                    Text("(67) 99000-0000",style:TextStyle(color: Colors.white)),
+                    Text("(67) 3397-0000",style:TextStyle(color: Colors.white))
+                  ],)
+                ],),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                Text("(67) 99000-0000",style:TextStyle(color: Colors.white)),
-                Text("(67) 99000-0000",style:TextStyle(color: Colors.white)),
-                Text("(67) 3397-0000",style:TextStyle(color: Colors.white))
-              ],)
-            ],),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0,0,8,0),
-                child: Icon(Icons.map,color:Colors.white,size:24),
+            ),
+            Expanded(
+              flex: 1,
+              child: GestureDetector(
+                onTap: onTapAddress,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Icon(Icons.map,color:Colors.white,size:24),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 8, right: 8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: <Widget>[
+                        AutoSizeText("Av. Afonso Pena, Nº 1020, Jardim dos Estados",style:TextStyle(color: Colors.white), maxLines: 4, softWrap: true,),
+                      ],),
+                    ),
+                  )
+                ],),
               ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: <Widget>[
-                Text("Av. Afonso Pena",style:TextStyle(color: Colors.white)),
-                Text("N 1030",style:TextStyle(color: Colors.white)),
-                Text("Jardim dos Estados",style:TextStyle(color: Colors.white))
-              ],)
-            ],)
+            )
 
     ],),);
 }
