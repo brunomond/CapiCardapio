@@ -11,7 +11,6 @@ import 'package:CapiCardapio/View/HomePage/home_page.dart';
 import 'package:CapiCardapio/View/AdminPage/LoginAdminPage.dart';
 import 'package:CapiCardapio/View/DescritionPage/descrition_page.dart';
 import 'package:CapiCardapio/View/MenuPageRest/MenuPageRest.dart';
-import 'package:CapiCardapio/View/MenuPageBar/MenuPageBar.dart';
 
 void main() => runApp(MyApp());
 
@@ -35,8 +34,8 @@ class MyApp extends StatelessWidget {
         '/admin_page': (BuildContext context) => AdminPage(title: 'Admin'),
         '/descrition_page': (BuildContext context) => DescritionPage(title: 'Descrição'),
         '/login_admin': (BuildContext context) => LoginAdminPage(title: 'Admin'),
-        '/menupage_rest':(BuildContext context) => CardapioRest(),
-        '/menupage_bar' :(BuildContext context) => CardapioBar(),
+        '/menu_page':(BuildContext context) => MyTabs()
+
       },
     );
   }

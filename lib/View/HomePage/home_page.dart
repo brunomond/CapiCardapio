@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
               hours: "10:00 às 14:00",
               image: AssetImage('images/restarant.jpg'),
               navigatorToPage: (){
-                Navigator.pushNamed(context, '/menupage_rest');
+                Navigator.pushNamed(context, '/menu_page');
               },
             ),
             CardWidget(
@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
               hours: "18:00 às 00:00",
               image: AssetImage('images/bar.jpg'),
               navigatorToPage: (){
-                Navigator.pushNamed(context, '/menupage_bar');
+                Navigator.pushNamed(context, '/menu_page');
               }
             ),
             EnderecoWidget(context)

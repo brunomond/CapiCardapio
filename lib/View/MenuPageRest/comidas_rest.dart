@@ -39,7 +39,7 @@ class _ComidasState extends State<Comidas> {
                   ),
                   Expanded(
                       child: Container(
-                          color: Theme.of(context).primaryColor,
+                          color: Color.fromRGBO(173, 40, 49, 1),
                           padding: EdgeInsets.all(5),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
