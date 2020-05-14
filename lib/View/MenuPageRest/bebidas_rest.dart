@@ -1,24 +1,16 @@
-import 'package:CapiCardapio/View/Components/AppBarWidget.dart';
 import 'package:CapiCardapio/View/Components/MenuItem.dart';
-import 'package:CapiCardapio/View/DrawerPage/DrawerPage.dart';
 import 'package:flutter/material.dart';
 
-class FavoritePage extends StatefulWidget {
-
-  final String title;
-  const FavoritePage({Key key, this.title}) : super(key: key);
-
+class BebidasRest extends StatefulWidget {
   @override
-  _FavoritePageState createState() => _FavoritePageState();
+  _BebidasRestState createState() => _BebidasRestState();
 }
 
-class _FavoritePageState extends State<FavoritePage> {
+class _BebidasRestState extends State<BebidasRest> {
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBarWidget(title: widget.title),
-      drawer: DrawerPage(selectedPage: 'favorites',),
-      body: GridView.builder(
+    return GridView.builder(
         padding: EdgeInsets.all(10),
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 2,
@@ -28,11 +20,11 @@ class _FavoritePageState extends State<FavoritePage> {
         ),
         itemCount: 10,
         itemBuilder: (context, index) {
-          return MenuItem(title: 'Porção batata frita com bacon e cheddar', price: 12.4, favorite: false, onTap: _navigateToDescription,);
-      })
-    );
-  }
 
+          return MenuItem(title: 'Porção batata frita com bacon e cheddar', price: 12.4, favorite: false, onTap: _navigateToDescription,);
+
+        });
+  }
   void _navigateToDescription(){
     Navigator.pushNamed(context, '/description_page');
   }

@@ -1,3 +1,5 @@
+![CapiDevs](https://github.com/brunomond/CapiCardapio/blob/master/images/brand_devs.png)
+ 
 # CapiCardapio
 
 _Aqui está um parágrafo que descreve o que é o projeto_
