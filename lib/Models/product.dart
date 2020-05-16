@@ -10,7 +10,7 @@ class Product {
   Cardapio cardapio;
   Tipo tipo;
 
-  Product(){
+  Product() {
     this.disponivel = true;
   }
 
@@ -21,16 +21,13 @@ class Product {
     this.descricao = map['descricao'];
     this.disponivel = map['disponivel'];
 
-    switch (map['cardapio']) {
-      case 'manha':
+    if (map['cardapio'].length > 1)
+      this.cardapio = Cardapio.ambos;
+    else {
+      if (map['cardapio'][0] == 'manha')
         this.cardapio = Cardapio.manha;
-        break;
-      case 'noite':
+      else
         this.cardapio = Cardapio.noite;
-        break;
-      case 'ambos':
-        this.cardapio = Cardapio.ambos;
-        break;
     }
 
     switch (map['tipo']) {
@@ -43,20 +40,30 @@ class Product {
     }
   }
 
-  //Product(this.nome, this.urlImage, this.preco, this.descricao, [this.disponivel=true]);
-
   Map toMap() {
     Map<String, dynamic> map = {
       'nome': nome,
       'urlImage': urlImage,
       'preco': preco,
       'descricao': descricao,
-      'cardapio': describeEnum(cardapio),
       'tipo': describeEnum(tipo)
     };
 
-    if (disponivel == null) map['disponivel'] = true;
-    else map['disponivel'] = disponivel;
+    switch (cardapio) {
+      case Cardapio.manha:
+        map['cardapio'] = ['manha'];
+        break;
+      case Cardapio.noite:
+        map['cardapio'] = ['noite'];
+        break;
+      case Cardapio.ambos:
+        map['cardapio'] = ['manha', 'noite'];
+        break;
+    }
+    if (disponivel == null)
+      map['disponivel'] = true;
+    else
+      map['disponivel'] = disponivel;
 
     return map;
   }
