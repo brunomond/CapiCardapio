@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 class DescriptionPage extends StatefulWidget {
 
   final Product product;
-
-  DescriptionPage({this.product});
+  final bool isFavorite;
+  DescriptionPage({this.product, this.isFavorite});
 
   @override
   _DescritionPageState createState() => _DescritionPageState();
@@ -25,18 +25,23 @@ class _DescritionPageState extends State<DescriptionPage> {
     _nome = widget.product.nome;
     _image = widget.product.urlImage;
     _descri= widget.product.descricao;
+    _fav(true);
 
   }
 
 
-  void _fav() {
-    setState(() {
-      if (_favorito == true) {
-        _favorito = false;
-      } else {
-        _favorito = true;
-      }
-    });
+  void _fav(bool init) async{
+    if(init){
+      _favorito = await widget.product.isFavorite();
+      setState(() {
+        _favorito = ! !_favorito;
+      });
+    } else {
+      setState(() {
+        widget.product.addFavorites();
+        _favorito = !_favorito;
+      });
+    }
   }
 
   @override
@@ -75,7 +80,7 @@ class _DescritionPageState extends State<DescriptionPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.only(bottom: 4),
+                        padding: EdgeInsets.only(bottom: 4, right: 72),
                         child: Text(
                           _nome,
                           style: TextStyle(
@@ -101,7 +106,7 @@ class _DescritionPageState extends State<DescriptionPage> {
                     child: FloatingActionButton(
                       elevation: 4,
                       backgroundColor: Theme.of(context).primaryColorDark,
-                      onPressed: _fav,
+                      onPressed: () => _fav(false),
                       child:
                       Icon(_favorito ? Icons.favorite : Icons.favorite_border,size:32),
                     ),
