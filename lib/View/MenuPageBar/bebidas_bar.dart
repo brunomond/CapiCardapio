@@ -18,6 +18,7 @@ class _BebidasBarState extends State<BebidasBar> {
             .collection('products')
             .where('cardapio', arrayContains: 'noite')
             .where('tipo', isEqualTo: 'bebida')
+            .where('disponivel', isEqualTo: true)
             .snapshots(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
@@ -43,7 +44,8 @@ class _BebidasBarState extends State<BebidasBar> {
                       imageUrl: documents[index].data['urlImage'],
                       title: documents[index].data['nome'],
                       price: documents[index].data['preco'],
-                      favorite: false,
+                      favorite:_isfavorite(Product.fromMap(documents[index].data)) ?? Future.value(false),
+                      onFavorite: () => _favorite(Product.fromMap(documents[index].data)),
                       onTap: () => _navigateToDescription(Product.fromMap(documents[index].data)),
                     );
                   });
@@ -54,5 +56,16 @@ class _BebidasBarState extends State<BebidasBar> {
 
   void _navigateToDescription(Product product) {
     Navigator.push(context, MaterialPageRoute(builder: (context) => DescriptionPage(product: product)));
+  }
+
+  void _favorite(Product product){
+    product.addFavorites();
+    setState(() {
+
+    });
+
+  }
+  Future<bool> _isfavorite(Product product){
+    return product.isFavorite();
   }
 }

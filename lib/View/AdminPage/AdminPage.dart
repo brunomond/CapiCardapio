@@ -113,7 +113,6 @@ class _AdminPageState extends State<AdminPage> {
 
   void testLogin() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-
     var status = prefs.getBool('logged') ?? false;
 
     if (status) {
