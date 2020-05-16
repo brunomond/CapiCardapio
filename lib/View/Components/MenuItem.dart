@@ -40,7 +40,7 @@ class MenuItem extends StatelessWidget {
                         color: Theme.of(context).primaryColor,
                         padding: EdgeInsets.all(5),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: <Widget>[
                             Expanded(

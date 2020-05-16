@@ -1,4 +1,5 @@
 import 'package:CapiCardapio/View/Components/MenuItem.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class BebidasRest extends StatefulWidget {
@@ -10,19 +11,44 @@ class _BebidasRestState extends State<BebidasRest> {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-        padding: EdgeInsets.all(10),
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          mainAxisSpacing: 10,
-          crossAxisSpacing: 10,
-          childAspectRatio: 0.7894736842105263,
-        ),
-        itemCount: 10,
-        itemBuilder: (context, index) {
+    return StreamBuilder<QuerySnapshot>(
+        stream: Firestore.instance
+            .collection('products')
+            .where('cardapio', arrayContains: 'manha')
+            .where('tipo', isEqualTo: 'bebida')
+            .snapshots(),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+            case ConnectionState.waiting:
+              return Center(child: CircularProgressIndicator());
+              break;
+            default:
+              List<DocumentSnapshot> documents =
+              snapshot.data.documents.toList();
 
-          return MenuItem(title: 'Porção batata frita com bacon e cheddar', price: 12.4, favorite: false, onTap: _navigateToDescription,);
+              print(documents);
 
+              return GridView.builder(
+                  padding: EdgeInsets.all(10.0),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    childAspectRatio: 0.7894736842105263,
+                  ),
+                  itemCount: documents.length,
+                  itemBuilder: (context, index) {
+                    return MenuItem(
+                      imageUrl: documents[index].data['urlImage'],
+                      title: documents[index].data['nome'],
+                      price: documents[index].data['preco'],
+                      favorite: false,
+                      onTap: _navigateToDescription,
+                    );
+                  });
+              break;
+          }
         });
   }
   void _navigateToDescription(){
