@@ -1,4 +1,6 @@
+import 'package:CapiCardapio/Models/product.dart';
 import 'package:CapiCardapio/View/Components/MenuItem.dart';
+import 'package:CapiCardapio/View/DescriptionPage/DescriptionPage.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -27,8 +29,6 @@ class _BebidasRestState extends State<BebidasRest> {
               List<DocumentSnapshot> documents =
               snapshot.data.documents.toList();
 
-              print(documents);
-
               return GridView.builder(
                   padding: EdgeInsets.all(10.0),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -44,14 +44,14 @@ class _BebidasRestState extends State<BebidasRest> {
                       title: documents[index].data['nome'],
                       price: documents[index].data['preco'],
                       favorite: false,
-                      onTap: _navigateToDescription,
+                      onTap: () => _navigateToDescription(Product.fromMap(documents[index].data)),
                     );
                   });
               break;
           }
         });
   }
-  void _navigateToDescription(){
-    Navigator.pushNamed(context, '/description_page');
+  void _navigateToDescription(Product product) {
+    Navigator.push(context, MaterialPageRoute(builder: (context) => DescriptionPage(product: product)));
   }
 }
