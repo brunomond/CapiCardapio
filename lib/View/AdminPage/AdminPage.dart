@@ -185,37 +185,35 @@ class _AdminPageState extends State<AdminPage> {
         builder: (context) => Center(
           child: SizedBox(
             width: MediaQuery.of(context).size.width * 0.85,
-            child: Expanded(
-              child: AlertDialog(
-                    title: Text("Remover ${product.nome}"),
-                    content: Text("Deseja realmente remover o item?"),
-                    actions: <Widget>[
-                      FlatButton(
-                        child: Text(
-                          "Não",
-                          style: TextStyle(color: Theme.of(context).primaryColor),
-                        ),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
+            child: AlertDialog(
+                  title: Text("Remover ${product.nome}"),
+                  content: Text("Deseja realmente remover o item?"),
+                  actions: <Widget>[
+                    FlatButton(
+                      child: Text(
+                        "Não",
+                        style: TextStyle(color: Theme.of(context).primaryColor),
                       ),
-                      FlatButton(
-                        child: Text(
-                          "Sim",
-                          style: TextStyle(color: Theme.of(context).disabledColor),
-                        ),
-                        onPressed: () {
-                          Firestore.instance
-                              .collection('products')
-                              .document(docRef)
-                              .delete()
-                              .catchError((e) => print(e));
-                          Navigator.pop(context);
-                        },
-                      )
-                    ],
-                  ),
-            ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    FlatButton(
+                      child: Text(
+                        "Sim",
+                        style: TextStyle(color: Theme.of(context).disabledColor),
+                      ),
+                      onPressed: () {
+                        Firestore.instance
+                            .collection('products')
+                            .document(docRef)
+                            .delete()
+                            .catchError((e) => print(e));
+                        Navigator.pop(context);
+                      },
+                    )
+                  ],
+                ),
           ),
         ));
   }

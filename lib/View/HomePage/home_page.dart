@@ -78,7 +78,6 @@ class _HomePageState extends State<HomePage> {
         Center(
           child: SizedBox(
             width: MediaQuery.of(context).size.width * 0.85,
-            child: Expanded(
               child: AlertDialog(
                 title: AutoSizeText('Ligar para $phone', maxLines: 1,),
                 actions: <Widget>[
@@ -107,7 +106,6 @@ class _HomePageState extends State<HomePage> {
                   )
                 ],
               ),
-            ),
           ),
         ));
   }
