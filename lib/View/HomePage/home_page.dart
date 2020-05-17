@@ -75,33 +75,40 @@ class _HomePageState extends State<HomePage> {
       case 3: phone ='(67) 3397-0000'; break;
     }
     showDialog(context: context, builder: (context) =>
-        AlertDialog(
-          title: AutoSizeText('Ligar para $phone', maxLines: 1,),
-          actions: <Widget>[
-            FlatButton(
-              child: Text(
-                'Sim',
-                style: TextStyle(color: Theme
-                    .of(context)
-                    .primaryColor),
+        Center(
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.85,
+            child: Expanded(
+              child: AlertDialog(
+                title: AutoSizeText('Ligar para $phone', maxLines: 1,),
+                actions: <Widget>[
+                  FlatButton(
+                    child: Text(
+                      'Sim',
+                      style: TextStyle(color: Theme
+                          .of(context)
+                          .primaryColor),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      launch('tel:$phone');
+                    },
+                  ),
+                  FlatButton(
+                    child: Text(
+                      'Não',
+                      style: TextStyle(color: Theme
+                          .of(context)
+                          .disabledColor),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                ],
               ),
-              onPressed: () {
-                Navigator.pop(context);
-                launch('tel:$phone');
-              },
             ),
-            FlatButton(
-              child: Text(
-                'Não',
-                style: TextStyle(color: Theme
-                    .of(context)
-                    .disabledColor),
-              ),
-              onPressed: () {
-                Navigator.pop(context);
-              },
-            )
-          ],
+          ),
         ));
   }
   
