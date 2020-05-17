@@ -306,12 +306,12 @@ class _NewProductPageState extends State<NewProductPage> {
       showDialog(
           context: context,
           builder: (context) => AlertDialog(
-                title: Text("Descartar Alterações?"),
-                content: Text("Se sair as alterações serão perdidas!"),
+                title: Text('Descartar Alterações?'),
+                content: Text('Se sair as alterações serão perdidas!'),
                 actions: <Widget>[
                   FlatButton(
                     child: Text(
-                      "Cancelar",
+                      'Cancelar',
                       style: TextStyle(color: Theme.of(context).primaryColor),
                     ),
                     onPressed: () {
@@ -320,7 +320,7 @@ class _NewProductPageState extends State<NewProductPage> {
                   ),
                   FlatButton(
                     child: Text(
-                      "Sim",
+                      'Sim',
                       style: TextStyle(color: Theme.of(context).disabledColor),
                     ),
                     onPressed: () {

@@ -10,7 +10,6 @@ class BebidasRest extends StatefulWidget {
 }
 
 class _BebidasRestState extends State<BebidasRest> {
-
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<QuerySnapshot>(
@@ -24,11 +23,14 @@ class _BebidasRestState extends State<BebidasRest> {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
             case ConnectionState.waiting:
-              return Center(child: CircularProgressIndicator());
+              return Center(
+                  child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                          Theme.of(context).primaryColor)));
               break;
             default:
               List<DocumentSnapshot> documents =
-              snapshot.data.documents.toList();
+                  snapshot.data.documents.toList();
 
               return GridView.builder(
                   padding: EdgeInsets.all(10.0),
@@ -44,27 +46,33 @@ class _BebidasRestState extends State<BebidasRest> {
                       imageUrl: documents[index].data['urlImage'],
                       title: documents[index].data['nome'],
                       price: documents[index].data['preco'],
-                      favorite:_isfavorite(Product.fromMap(documents[index].data)) ?? Future.value(false),
-                      onFavorite: () => _favorite(Product.fromMap(documents[index].data)),
-                      onTap: () => _navigateToDescription(Product.fromMap(documents[index].data)),
+                      favorite:
+                          _isfavorite(Product.fromMap(documents[index].data)) ??
+                              Future.value(false),
+                      onFavorite: () =>
+                          _favorite(Product.fromMap(documents[index].data)),
+                      onTap: () => _navigateToDescription(
+                          Product.fromMap(documents[index].data)),
                     );
                   });
               break;
           }
         });
   }
+
   void _navigateToDescription(Product product) {
-    Navigator.push(context, MaterialPageRoute(builder: (context) => DescriptionPage(product: product)));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => DescriptionPage(product: product)));
   }
 
-  void _favorite(Product product){
+  void _favorite(Product product) {
     product.addFavorites();
-    setState(() {
-
-    });
-
+    setState(() {});
   }
-  Future<bool> _isfavorite(Product product){
+
+  Future<bool> _isfavorite(Product product) {
     return product.isFavorite();
   }
 }

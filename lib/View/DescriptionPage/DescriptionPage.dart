@@ -128,7 +128,7 @@ class _DescritionPageState extends State<DescriptionPage> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8),
                     child: Text(
-                    "Descrição",
+                    'Descrição',
                     style: TextStyle(
                         color: Color.fromRGBO(33, 33, 33, 1),
                         fontSize: 18,

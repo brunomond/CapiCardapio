@@ -29,7 +29,9 @@ class _FavoritePageState extends State<FavoritePage> {
               switch (snapshotFavs.connectionState) {
                 case ConnectionState.none:
                 case ConnectionState.waiting:
-                  return Center(child: CircularProgressIndicator(),);
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
                   break;
                 default:
                   return StreamBuilder(
@@ -37,21 +39,23 @@ class _FavoritePageState extends State<FavoritePage> {
                           .collection('products')
                           .where('nome', whereIn: snapshotFavs.data.toList())
                           .snapshots(),
-
                       builder: (context, snapshot) {
                         switch (snapshot.connectionState) {
                           case ConnectionState.none:
                           case ConnectionState.waiting:
-                            return Center(child: CircularProgressIndicator());
+                            return Center(
+                                child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                        Theme.of(context).primaryColor)));
                             break;
                           default:
                             List<DocumentSnapshot> documents =
-                            snapshot.data.documents.toList();
+                                snapshot.data.documents.toList();
 
                             return GridView.builder(
                                 padding: EdgeInsets.all(10.0),
                                 gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 2,
                                   mainAxisSpacing: 10,
                                   crossAxisSpacing: 10,
@@ -64,16 +68,12 @@ class _FavoritePageState extends State<FavoritePage> {
                                     title: documents[index].data['nome'],
                                     price: documents[index].data['preco'],
                                     favorite: _isfavorite(Product.fromMap(
-                                        documents[index].data)) ??
+                                            documents[index].data)) ??
                                         Future.value(false),
-                                    onFavorite: () =>
-                                        _favorite(
-                                            Product.fromMap(
-                                                documents[index].data)),
-                                    onTap: () =>
-                                        _navigateToDescription(
-                                            Product.fromMap(
-                                                documents[index].data)),
+                                    onFavorite: () => _favorite(
+                                        Product.fromMap(documents[index].data)),
+                                    onTap: () => _navigateToDescription(
+                                        Product.fromMap(documents[index].data)),
                                   );
                                 });
                             break;
