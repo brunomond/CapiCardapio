@@ -38,12 +38,13 @@ dependencies:
   transparent_image: 1.0.0
   scoped_model: ^1.0.1
   path_provider: ^1.6.7
-  url_launcher: ^5.4.5
+  url_launcher: ^5.4.7
   shared_preferences: ^0.5.7+1
   flutter_masked_text: ^0.8.0
   image_picker: ^0.6.6+1
   image_cropper: ^1.2.1
   auto_size_text: ^2.1.0
+  maps_launcher: ^1.2.0
 
 dev_dependencies:
   flutter_test:
@@ -74,7 +75,6 @@ flutter:
     - images/camera.png
     - images/gallery.png
     - images/About.jpeg
-    - images/rodape_about.jpeg
     - images/twins_logo_white.png
     - images/facebook_logo.png
     - images/instagram_logo.png

@@ -1,3 +1,4 @@
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -5,7 +6,7 @@ class AboutWidget extends StatelessWidget {
 
   final Function onTapPhone;
   final Function onTapAddress;
-
+  final GlobalKey _textKey = GlobalKey();
   AboutWidget({this.onTapPhone, this.onTapAddress});
 
   @override
@@ -58,7 +59,7 @@ class AboutWidget extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: onTapPhone,
+              onTap: () => onTapPhone('(67) 99000-0000 - (67) 99000-0000 - (67) 3333-0000'),
               child: Row(
                 children: <Widget>[
                   Padding(
@@ -68,7 +69,7 @@ class AboutWidget extends StatelessWidget {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("67 99000-0000 - 67 99000-0000 67 3333-0000",
+                      child: AutoSizeText('(67)99000-0000 - (67)99000-0000 - (67)3333-0000',
                           style: TextStyle(color: Colors.white, fontSize: 16), maxLines: 3,),
                     ),
                   )
@@ -76,7 +77,7 @@ class AboutWidget extends StatelessWidget {
               ),
             ),
             GestureDetector(
-              onTap: onTapAddress,
+              onTap: () => onTapAddress('Av. Afonso Pena, N° 1020 Jardim dos Estados'),
               child: Row(
                 children: <Widget>[
                   Padding(
@@ -86,7 +87,7 @@ class AboutWidget extends StatelessWidget {
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text("Av. Afonso Pena, N° 1020 Jardim dos Estados",
+                      child: AutoSizeText('Av. Afonso Pena, N° 1020 Jardim dos Estados',
                           style: TextStyle(color: Colors.white, fontSize: 16), maxLines: 3,),
                     ),
                   )

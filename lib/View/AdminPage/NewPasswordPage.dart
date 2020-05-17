@@ -177,31 +177,36 @@ class _NewPasswordPageState extends State<NewPasswordPage> {
     if (_edited) {
       showDialog(
           context: context,
-          builder: (context) => AlertDialog(
-                title: Text("Descartar Alterações?"),
-                content: Text("Se sair as alterações serão perdidas!"),
-                actions: <Widget>[
-                  FlatButton(
-                    child: Text(
-                      "Cancelar",
-                      style: TextStyle(color: Theme.of(context).primaryColor),
-                    ),
-                    onPressed: () {
-                      Navigator.pop(context);
-                    },
+          builder: (context) => Center(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.85,
+              child: AlertDialog(
+                    title: Text("Descartar Alterações?"),
+                    content: Text("Se sair as alterações serão perdidas!"),
+                    actions: <Widget>[
+                      FlatButton(
+                        child: Text(
+                          "Cancelar",
+                          style: TextStyle(color: Theme.of(context).primaryColor),
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      ),
+                      FlatButton(
+                        child: Text(
+                          "Sim",
+                          style: TextStyle(color: Theme.of(context).disabledColor),
+                        ),
+                        onPressed: () {
+                          Navigator.popUntil(
+                              context, ModalRoute.withName('/admin_page'));
+                        },
+                      )
+                    ],
                   ),
-                  FlatButton(
-                    child: Text(
-                      "Sim",
-                      style: TextStyle(color: Theme.of(context).disabledColor),
-                    ),
-                    onPressed: () {
-                      Navigator.popUntil(
-                          context, ModalRoute.withName('/admin_page'));
-                    },
-                  )
-                ],
-              ));
+            ),
+          ));
       return Future.value(false);
     }
 

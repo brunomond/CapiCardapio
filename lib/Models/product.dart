@@ -1,5 +1,9 @@
+import 'dart:async';
+import 'dart:core';
+
 import 'package:CapiCardapio/Models/Enums.dart';
 import 'package:flutter/foundation.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Product {
   String nome;
@@ -9,8 +13,9 @@ class Product {
   bool disponivel;
   Cardapio cardapio;
   Tipo tipo;
+  bool favorite;
 
-  Product(){
+  Product() {
     this.disponivel = true;
   }
 
@@ -21,16 +26,13 @@ class Product {
     this.descricao = map['descricao'];
     this.disponivel = map['disponivel'];
 
-    switch (map['cardapio']) {
-      case 'manha':
+    if (map['cardapio'].length > 1)
+      this.cardapio = Cardapio.ambos;
+    else {
+      if (map['cardapio'][0] == 'manha')
         this.cardapio = Cardapio.manha;
-        break;
-      case 'noite':
+      else
         this.cardapio = Cardapio.noite;
-        break;
-      case 'ambos':
-        this.cardapio = Cardapio.ambos;
-        break;
     }
 
     switch (map['tipo']) {
@@ -43,20 +45,30 @@ class Product {
     }
   }
 
-  //Product(this.nome, this.urlImage, this.preco, this.descricao, [this.disponivel=true]);
-
   Map toMap() {
     Map<String, dynamic> map = {
       'nome': nome,
       'urlImage': urlImage,
       'preco': preco,
       'descricao': descricao,
-      'cardapio': describeEnum(cardapio),
       'tipo': describeEnum(tipo)
     };
 
-    if (disponivel == null) map['disponivel'] = true;
-    else map['disponivel'] = disponivel;
+    switch (cardapio) {
+      case Cardapio.manha:
+        map['cardapio'] = ['manha'];
+        break;
+      case Cardapio.noite:
+        map['cardapio'] = ['noite'];
+        break;
+      case Cardapio.ambos:
+        map['cardapio'] = ['manha', 'noite'];
+        break;
+    }
+    if (disponivel == null)
+      map['disponivel'] = true;
+    else
+      map['disponivel'] = disponivel;
 
     return map;
   }
@@ -67,8 +79,38 @@ class Product {
     return this.disponivel;
   }
 
-  @override
-  String toString() {
-    return 'Product{nome: $nome, urlImage: $urlImage, preco: $preco, descricao: $descricao, disponivel: $disponivel, cardapio: $cardapio, tipo: $tipo}';
+  void addFavorites() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String> favs = List<String>();
+    bool isFavorite = await this.isFavorite();
+
+    if (prefs.getStringList('favorites') != null)
+      favs = prefs.getStringList('favorites');
+
+    if (isFavorite)
+      favs.remove(this.nome);
+    else
+      favs.add(this.nome);
+
+    prefs.setStringList('favorites', favs);
+  }
+
+  static Future<List<String>> getFavorites() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    return prefs.getStringList('favorites');
+  }
+
+  Future<bool> isFavorite() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool isFavorite = false;
+    List<String> favs = prefs.getStringList('favorites');
+
+    if (favs != null) {
+      favs.forEach((element) {
+        if (element == this.nome) isFavorite = true;
+      });
+    }
+
+    return isFavorite;
   }
 }

@@ -113,7 +113,6 @@ class _AdminPageState extends State<AdminPage> {
 
   void testLogin() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-
     var status = prefs.getBool('logged') ?? false;
 
     if (status) {
@@ -183,34 +182,39 @@ class _AdminPageState extends State<AdminPage> {
   void _deleteProduct(Product product, String docRef) {
     showDialog(
         context: context,
-        builder: (context) => AlertDialog(
-              title: Text("Remover ${product.nome}"),
-              content: Text("Deseja realmente remover o item?"),
-              actions: <Widget>[
-                FlatButton(
-                  child: Text(
-                    "Não",
-                    style: TextStyle(color: Theme.of(context).primaryColor),
-                  ),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
+        builder: (context) => Center(
+          child: SizedBox(
+            width: MediaQuery.of(context).size.width * 0.85,
+            child: AlertDialog(
+                  title: Text("Remover ${product.nome}"),
+                  content: Text("Deseja realmente remover o item?"),
+                  actions: <Widget>[
+                    FlatButton(
+                      child: Text(
+                        "Não",
+                        style: TextStyle(color: Theme.of(context).primaryColor),
+                      ),
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                    FlatButton(
+                      child: Text(
+                        "Sim",
+                        style: TextStyle(color: Theme.of(context).disabledColor),
+                      ),
+                      onPressed: () {
+                        Firestore.instance
+                            .collection('products')
+                            .document(docRef)
+                            .delete()
+                            .catchError((e) => print(e));
+                        Navigator.pop(context);
+                      },
+                    )
+                  ],
                 ),
-                FlatButton(
-                  child: Text(
-                    "Sim",
-                    style: TextStyle(color: Theme.of(context).disabledColor),
-                  ),
-                  onPressed: () {
-                    Firestore.instance
-                        .collection('products')
-                        .document(docRef)
-                        .delete()
-                        .catchError((e) => print(e));
-                    Navigator.pop(context);
-                  },
-                )
-              ],
-            ));
+          ),
+        ));
   }
 }

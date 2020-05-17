@@ -1,7 +1,10 @@
+import 'package:CapiCardapio/Models/product.dart';
 import 'package:flutter/material.dart';
 class DescriptionPage extends StatefulWidget {
-  DescriptionPage({Key key, this.title}) : super(key: key);
-  final String title;
+
+  final Product product;
+  final bool isFavorite;
+  DescriptionPage({this.product, this.isFavorite});
 
   @override
   _DescritionPageState createState() => _DescritionPageState();
@@ -10,26 +13,42 @@ class DescriptionPage extends StatefulWidget {
 class _DescritionPageState extends State<DescriptionPage> {
 
   bool _favorito = true;
-  String _valor = "17,00";
-  String _nome = "Prato executivo de carne";
-  String _image = "images/Prato_Executivo.jpg";
-  String _descri= "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+  String _valor = 'preco';
+  String _nome = 'nome';
+  String _image = 'image';
+  String _descri= 'descricao';
 
-  void _fav() {
-    setState(() {
-      if (_favorito == true) {
-        _favorito = false;
-      } else {
-        _favorito = true;
-      }
-    });
+  @override
+  void initState() {
+    super.initState();
+    _valor = widget.product.preco.toStringAsFixed(2).replaceAll('.', ',');
+    _nome = widget.product.nome;
+    _image = widget.product.urlImage;
+    _descri= widget.product.descricao;
+    _fav(true);
+
+  }
+
+
+  void _fav(bool init) async{
+    if(init){
+      _favorito = await widget.product.isFavorite();
+      setState(() {
+        _favorito = ! !_favorito;
+      });
+    } else {
+      setState(() {
+        widget.product.addFavorites();
+        _favorito = !_favorito;
+      });
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Cardápio Restaurante"),
+        title: Text(_nome),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,10 +58,7 @@ class _DescritionPageState extends State<DescriptionPage> {
         Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height / 3,
-          child: Image.asset(
-            _image,
-            fit: BoxFit.fitHeight,
-          ),
+          child: Image.network(_image, fit: BoxFit.cover,),
         ),
         Container(
           width: MediaQuery.of(context).size.width,
@@ -64,7 +80,7 @@ class _DescritionPageState extends State<DescriptionPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                       Padding(
-                        padding: EdgeInsets.only(bottom: 4),
+                        padding: EdgeInsets.only(bottom: 4, right: 72),
                         child: Text(
                           _nome,
                           style: TextStyle(
@@ -90,7 +106,7 @@ class _DescritionPageState extends State<DescriptionPage> {
                     child: FloatingActionButton(
                       elevation: 4,
                       backgroundColor: Theme.of(context).primaryColorDark,
-                      onPressed: _fav,
+                      onPressed: () => _fav(false),
                       child:
                       Icon(_favorito ? Icons.favorite : Icons.favorite_border,size:32),
                     ),
@@ -112,7 +128,7 @@ class _DescritionPageState extends State<DescriptionPage> {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 8),
                     child: Text(
-                    "Descrição",
+                    'Descrição',
                     style: TextStyle(
                         color: Color.fromRGBO(33, 33, 33, 1),
                         fontSize: 18,
@@ -131,4 +147,5 @@ class _DescritionPageState extends State<DescriptionPage> {
       ])
     );
   }
+
 }
