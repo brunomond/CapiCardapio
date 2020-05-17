@@ -5,6 +5,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:CapiCardapio/View/DrawerPage/DrawerPage.dart';
 import 'package:maps_launcher/maps_launcher.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
@@ -16,6 +17,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  @override
+  void initState() {
+    super.initState();
+    _initFavs();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -100,5 +107,11 @@ class _HomePageState extends State<HomePage> {
   
   void _onTapAddress(String address) {
     MapsLauncher.launchQuery(address);
+  }
+
+
+  void _initFavs() async{
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.getStringList('favorites') == null ? prefs.setStringList('favorites', []) : null;
   }
 }

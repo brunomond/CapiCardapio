@@ -34,51 +34,68 @@ class _FavoritePageState extends State<FavoritePage> {
                   );
                   break;
                 default:
-                  return StreamBuilder(
-                      stream: Firestore.instance
-                          .collection('products')
-                          .where('nome', whereIn: snapshotFavs.data.toList())
-                          .snapshots(),
-                      builder: (context, snapshot) {
-                        switch (snapshot.connectionState) {
-                          case ConnectionState.none:
-                          case ConnectionState.waiting:
-                            return Center(
-                                child: CircularProgressIndicator(
-                                    valueColor: AlwaysStoppedAnimation<Color>(
-                                        Theme.of(context).primaryColor)));
-                            break;
-                          default:
-                            List<DocumentSnapshot> documents =
-                                snapshot.data.documents.toList();
+                  if (snapshotFavs.data.isNotEmpty) {
+                    return StreamBuilder(
+                        stream: Firestore.instance
+                            .collection('products')
+                            .where('nome', whereIn: snapshotFavs.data.toList())
+                            .snapshots(),
+                        builder: (context, snapshot) {
+                          switch (snapshot.connectionState) {
+                            case ConnectionState.none:
+                            case ConnectionState.waiting:
+                              return Center(
+                                  child: CircularProgressIndicator(
+                                      valueColor: AlwaysStoppedAnimation<Color>(
+                                          Theme.of(context).primaryColor)));
+                              break;
+                            default:
+                              List<DocumentSnapshot> documents =
+                                  snapshot.data.documents.toList();
 
-                            return GridView.builder(
-                                padding: EdgeInsets.all(10.0),
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  mainAxisSpacing: 10,
-                                  crossAxisSpacing: 10,
-                                  childAspectRatio: 0.7894736842105263,
-                                ),
-                                itemCount: documents.length,
-                                itemBuilder: (context, index) {
-                                  return MenuItem(
-                                    imageUrl: documents[index].data['urlImage'],
-                                    title: documents[index].data['nome'],
-                                    price: documents[index].data['preco'],
-                                    favorite: _isfavorite(Product.fromMap(
-                                            documents[index].data)) ??
-                                        Future.value(false),
-                                    onFavorite: () => _favorite(
-                                        Product.fromMap(documents[index].data)),
-                                    onTap: () => _navigateToDescription(
-                                        Product.fromMap(documents[index].data)),
-                                  );
-                                });
-                            break;
-                        }
-                      });
+                              return GridView.builder(
+                                  padding: EdgeInsets.all(10.0),
+                                  gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                    mainAxisSpacing: 10,
+                                    crossAxisSpacing: 10,
+                                    childAspectRatio: 0.7894736842105263,
+                                  ),
+                                  itemCount: documents.length,
+                                  itemBuilder: (context, index) {
+                                    return MenuItem(
+                                      imageUrl:
+                                          documents[index].data['urlImage'],
+                                      title: documents[index].data['nome'],
+                                      price: documents[index].data['preco'],
+                                      favorite: _isfavorite(Product.fromMap(
+                                              documents[index].data)) ??
+                                          Future.value(false),
+                                      onFavorite: () => _favorite(
+                                          Product.fromMap(
+                                              documents[index].data)),
+                                      onTap: () => _navigateToDescription(
+                                          Product.fromMap(
+                                              documents[index].data)),
+                                    );
+                                  });
+                              break;
+                          }
+                        });
+                  } else {
+                    return Container(
+                      child: Center(
+                        child: Text(
+                          'Você ainda não possui favoritos!',
+                          style:
+                              TextStyle(color: Theme.of(context).disabledColor, fontSize: 25),
+                          maxLines: 2,
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    );
+                  }
               }
             }));
   }
